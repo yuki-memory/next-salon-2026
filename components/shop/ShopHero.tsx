@@ -18,6 +18,9 @@ export default function ShopHero({ shop }: { shop: Shop }) {
         <div className="bg-slate-950 px-8 py-10 text-white">
           <p className="text-sm font-medium tracking-[0.3em] text-rose-200 uppercase">Visit</p>
           <div className="mt-6 space-y-6">
+            <div><p className="text-xs text-white/55">Address</p><p className="my-2 text-sm text-white/80">{shop.address}</p></div>
+            <div><p className="text-xs text-white/55">Phone</p><p className="my-2 text-sm text-white/80">{shop.phone}</p></div>
+            <div><p className="text-xs text-white/55">Business Hours</p><div className="my-2 text-sm text-white/80">{shop.businessHours.map((hours) => <p key={hours}>{hours}</p>)}</div></div>
             <div><p className="text-xs text-white/55">Tags</p><div className="mt-2 flex flex-wrap gap-2">{shop.tags.map((tag) => <span key={tag} className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/85">{tag}</span>)}</div></div>
             <div className="rounded-3xl bg-white/8 p-5"><p className="text-sm text-white/70">Review score</p><p className="mt-2 text-4xl font-semibold">{shop.rating}</p><p className="text-sm text-white/70">{shop.reviewCount} reviews</p></div>
             <Link href={`/shop/${shop.id}/book`} className="inline-flex w-full items-center justify-center rounded-full bg-rose-600 px-5 py-4 text-sm font-medium text-white transition hover:bg-rose-500">この店舗で予約する</Link>
