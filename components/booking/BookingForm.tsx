@@ -3,7 +3,7 @@
 import { Menu } from "@/types/menu";
 import { Shop } from "@/types/shop";
 import { Staff } from "@/types/staff";
-import { BookingProvider, TOTAL_STEPS, useBooking } from "@/contexts/BookingContext";
+import { BookingProvider, TOTAL_STEPS, canGoNext, useBooking } from "@/contexts/BookingContext";
 
 type BookingFormProps = {
   shop: Shop
@@ -42,6 +42,7 @@ function BookingFlow() {
           <button
             type="button"
             onClick={() => dispatch({ type: "next" })}
+            disabled={!canGoNext(state)}
             className="rounded-xl border border-slate-300 px-5 py-3 text-sm font-medium disabled:opacity-40"
           >
             次へ
@@ -49,7 +50,7 @@ function BookingFlow() {
         ) :
           <button
             type="button"
-            className="rounded-xl border border-rose-500 bg-rose-500 text-white px-5 py-3 text-sm disabled:opacity-40"
+            className="rounded-xl border border-slate-300 px-5 py-3 text-sm font-medium disabled:opacity-40"
           >
             この内容で予約する
           </button>
