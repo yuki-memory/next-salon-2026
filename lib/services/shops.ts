@@ -29,3 +29,6 @@ export async function getStaff(shopId: string): Promise<Staff[]> {
   const data: { staff: Staff[] } = await res.json()
   return data.staff
 }
+
+// 追加版の複数形の関数名にも対応する
+export const getStaffs = getStaff

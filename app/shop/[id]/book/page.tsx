@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 
 import SectionHeading from "@/components/SectionHeading"
-import { getMenus, getShop, getStaff } from "@/lib/services/shops"
+import { getMenus, getShop, getStaffs } from "@/lib/services/shops"
 import BookingForm from "@/components/booking/BookingForm"
 
 type Props = {
@@ -16,7 +16,7 @@ export default async function BookingPage({ params }: Props) {
     notFound()
   }
 
-  const [menus, staffs] = await Promise.all([getMenus(id), getStaff(id)])
+  const [menus, staffs] = await Promise.all([getMenus(id), getStaffs(id)])
 
   return (
     <div>
