@@ -39,9 +39,16 @@ export type BookingAction =
   | { type: "prev" }
   | { type: "reset" }
 
-// 入力 UI を接続するまでは、ステップの範囲で遷移を判定する
+// 各ステップで必須項目が選ばれているか
 export function canGoNext(state: BookingState): boolean {
-  return state.step <= TOTAL_STEPS
+  switch (state.step) {
+    case 1:
+      return state.menuId !== null
+    case 2:
+      return state.date !== null && state.time !== null
+    default:
+      return true
+  }
 }
 
 // 予約情報の状態を更新するための reducer

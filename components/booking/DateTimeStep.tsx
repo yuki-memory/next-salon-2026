@@ -1,4 +1,5 @@
 import SelectableCard from "@/components/booking/SelectableCard"
+import ui from "@/components/UI"
 
 type DateTimeStepProps = {
   candidateDates: string[]
@@ -18,21 +19,22 @@ export default function DateTimeStep({
   onSelectTime,
 }: DateTimeStepProps) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-6">
       <div>
-        <h3 className={"text-lg font-semibold text-slate-950"}>STEP 2: 日時を選ぶ</h3>
-        <div className="mt-2 flex flex-wrap gap-2">
+        <h3 className={ui.title}>STEP 2: 日付を選ぶ</h3>
+        <div className="mt-3 flex flex-wrap gap-2">
           {candidateDates.map((date) => (
-            <SelectableCard key={date} selected={selectedDate === date} onClick={() => onSelectDate(date)}>
+            <SelectableCard key={date} rounded="full" selected={selectedDate === date} onClick={() => onSelectDate(date)}>
               {date}
             </SelectableCard>
           ))}
         </div>
       </div>
       <div>
-        <div className="flex flex-wrap gap-2">
+        <h3 className={ui.title}>時間を選ぶ</h3>
+        <div className="mt-3 flex flex-wrap gap-2">
           {timeSlots.map((time) => (
-            <SelectableCard key={time} selected={selectedTime === time} onClick={() => onSelectTime(time)}>
+            <SelectableCard key={time} rounded="full" selected={selectedTime === time} onClick={() => onSelectTime(time)}>
               {time}
             </SelectableCard>
           ))}
